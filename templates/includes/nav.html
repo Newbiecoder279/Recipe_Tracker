@@ -1,0 +1,66 @@
+{%if user.is_authenticated%}
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    
+    <!-- Left: Brand -->
+    <a class="navbar-brand fs-2" href="/">Recipe Tracker</a>
+    
+    <!-- Center: 
+
+     <div class="d-flex justify-content-center flex-grow-1">
+      <form class="d-flex" role="search" style="max-width: 500px; width: 100%;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+   Search Form -->
+   
+
+    <!-- Right: Empty space or future icons/buttons -->
+    <div style="width: 150px;">
+      
+        {% csrf_token %}
+        {% load static %}
+        <a class="navbar-brand fs-3" href="{% url 'profile_detail' %}">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" style="width: 34px; height: 34px;">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+
+        </a>
+        <a class="navbar-brand fs-5" href="{%url 'logout'%}">Logout</a>
+        
+        
+    </div> <!-- acts as spacer to keep center alignment -->
+  </div>
+</nav>
+
+
+
+{%else%}
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    
+    <!-- Left: Brand -->
+    <a class="navbar-brand fs-2" href="/">Recipe Tracker</a>
+    
+    <!-- Center: Search Form -->
+
+
+    <!-- Right: Empty space or future icons/buttons -->
+    <div style="width: 150px;">
+      <form>
+        {% csrf_token %}
+        <a class="navbar-brand fs-5" href="{%url 'user_signup'%}">Signup</a>
+        <a class="navbar-brand fs-5" href="{%url 'user_login'%}">Login</a>
+        </form>
+        
+    </div> <!-- acts as spacer to keep center alignment -->
+  </div>
+</nav>
+
+
+{%endif%}
+
+

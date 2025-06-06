@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{%block content%}
+
+<div class="container d-flex justify-content-center w-50 pt-5">
+ <h2 class="text-dark ">Hello {{ user.username }}!</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-3">
+      <a href = "{%url 'new_recipes'%}" class="text-decoration-none text-dark">Add New Recipe</a>
+    </div>
+    <!--takes to new line--> <div class="w-100"></div>
+    <div class="col-6 col-sm-3">
+      <a href = "{%url 'recipe_list'%}" class="text-decoration-none text-dark">Your Recipes</a>
+    </div>
+  </div>
+</div>
+<!--
+<div class="row">
+ <a href = "{%url 'new_recipes'%}" class="text-decoration-none text-dark">Add New Recipe</a>
+ <a href = "{%url 'new_recipes'%}" class="text-decoration-none text-dark">Your Recipes</a>
+
+</div>
+-->
+
+  <div class="container mt-4">
+    <h2>Featured Recipes</h2>
+    <div class="row">
+      {% for recipe in recipes %}
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <a href = "{%url 'recipe_detail' recipe.idMeal%}">
+            <img src="{{ recipe.strMealThumb }}" class="card-img-top" alt="{{ recipe.strMeal }}">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.strMeal }}</h5>
+              <p class="card-text">{{ recipe.strCategory }} | {{ recipe.strArea }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+{%endblock%}

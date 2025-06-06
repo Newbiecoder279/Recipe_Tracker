@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <h2>{{meal.strMeal}}</h2>
+    {%if meal%}
+    <div class="container dflex justify-content-center">
+    <img src = "{{meal.strMealThumb}}" width="400">
+    </div>
+    <p><strong>Category:</strong>{{meal.strCategory}}</p>
+    <p><strong>Area:</strong>{{meal.strArea}}</p>
+    <p><strong>Instructions:</strong></p>
+    <p>{{meal.strInstructions}}</p>
+    <a href="#" onclick="history.back(); return false;">Back to recpies</a>
+    {%else%}
+    <p>Sorry, no details found!</p>
+
+    {% endif %}
+
+</body>
+{% endblock content %}

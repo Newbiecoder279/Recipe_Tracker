@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%block content%}
+<div class="container d-flex justify-content-center w-50 flex-column align-items-center">
+
+<h2>{{ user.username }}'s Profile</h2>
+
+
+{% if profile.profile_pic %}
+  <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" height="150">
+{% else %}
+  <p>No profile picture uploaded.</p>
+{% endif %}
+
+</div>
+
+<h3>Your Recipes:</h3>
+<a href = "{%url 'new_recipes'%}" class="text-decoration-none text-dark">Add recipes</a>
+<ul>
+  {% for recipe in recipes %}
+  <div>
+    <li>Title:{{recipe.title }}</li>
+    <img src="{{recipe.picture.url}}" height="150"></img>
+    <p>Ingrediants:{{recipe.ingrediants}}</p>
+    <p>Instructions:{{recipe.instructions}}</p>
+    <form method="POST" action={%url 'delete_recipe' recipe.id%}> 
+      {%csrf_token%}
+    <button type="submit" >Remove Recipe</button>
+    </form>
+    
+   </div>
+  {% empty %}
+    <li>You haven't added any recipes yet.</li>
+  {% endfor %}
+</ul>
+{%endblock%}

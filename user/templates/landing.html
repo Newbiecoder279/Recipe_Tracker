@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block content%}
+<h2>Featured Recipes</h2>
+  <div class="container mt-4">
+    <h2>Featured Recipes</h2>
+    <div class="row">
+      {% for recipe in recipes %}
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <a href = "{%url 'recipe_detail' recipe.idMeal%}">
+            <img src="{{ recipe.strMealThumb }}" class="card-img-top" alt="{{ recipe.strMeal }}">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.strMeal }}</h5>
+              <p class="card-text">{{ recipe.strCategory }} | {{ recipe.strArea }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+</div>
+{%endblock%} 

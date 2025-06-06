@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Your Recipes:</h3>
+<div class="d-flex justify-content-center flex-grow-1">
+      <form class="d-flex" role="search" style="max-width: 500px; width: 100%;">
+        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" value={{query}}/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+<a href = "{%url 'new_recipes'%}" class="text-decoration-none text-dark">Add recipes</a>
+{%if query%}
+<p>Showing results for: <strong>{{query}}</strong></p>
+{%endif%}
+<ul>
+  {% for recipe in recipes %}
+  <div>
+    <li>Title:{{recipe.title }}</li>
+    <img src="{{recipe.picture.url}}" height="150"></img>
+    <p>Ingrediants:{{recipe.ingrediants}}</p>
+    <p>Instructions:{{recipe.instructions}}</p>
+   </div>
+  {% empty %}
+    <li>You haven't added any recipes yet.</li>
+  {% endfor %}
+</ul>
+
+{%endblock%}

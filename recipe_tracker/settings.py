@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r=3$z#a*ch9)^vlyr%@rpkal&_$872=kf^$yp6wo=^njr0_h=w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['recipe-tracker-1.onrender.com']
 
 
 # Application definition
